@@ -1,5 +1,5 @@
 # PCF8574
-Arduino library for PCF8574 io expander module
+Arduino library for PCF8574 IO expander module
 
 ## Supported boards
 Should work on most of the boards, tested on UNO and ESP32DevKitV1
