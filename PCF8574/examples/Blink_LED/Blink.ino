@@ -11,9 +11,9 @@ PCF8574 ex1(21, 22, 0x20);
 
 void setup() {
 	pinMode(ex1, 0, OUTPUT);
-	digitalWrite(ex1, 0, HIGH);
 }
 
 void loop() {
-
+	digitalToggle(ex1, 0);
+	delay(500);
 }
