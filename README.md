@@ -83,7 +83,7 @@ This library allows microcontroller to use PCF8574 io expander module. If define
 ## How PCF8574 works?
 
  **PCF8574:**
- - Has only one 8-bit register
+ - Has only one 8-bit register to write
  - So, the pin can be in two states - connected to GND or (100uA) pull-up'ed
 ---
  - If register bit corresponding to IO is 0, pin is connected to GND
