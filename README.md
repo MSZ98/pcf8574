@@ -46,11 +46,11 @@ PCF8574(int SDA, int SCL, int address)</br>
 
 ### Functions
 
-void pinMode(PCF8574 &expander, int pin, int mode)</br>
-void digitalWrite(PCF8574 &expander, int pin, int value)</br>
-int digitalRead(PCF8574 &expander, int pin)</br>
-void digitalToggle(PCF8574 &expander, int pin)</br>
-int PCF8574::combinationToAddress(int A2_A1_A0, bool version_A)</br>
+void pinMode(PCF8574 &expander, int pin, int mode)</br></br>
+void digitalWrite(PCF8574 &expander, int pin, int value)</br></br>
+int digitalRead(PCF8574 &expander, int pin)</br></br>
+void digitalToggle(PCF8574 &expander, int pin)</br></br>
+int PCF8574::combinationToAddress(int A2_A1_A0, bool version_A)</br></br>
 
 ### Including library
 
