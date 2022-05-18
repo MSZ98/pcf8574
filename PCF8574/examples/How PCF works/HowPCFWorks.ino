@@ -4,7 +4,7 @@ PCF8574 ex1(21, 22, 0x20);
 //PCF8574 ex1(21, 22, PCF8574::combinationToAddress(0));
 
 // PCF8574:
-// Has only one 8-bit register
+// Has only one 8-bit register to write
 // So, the pin can be in two states - connected to GND or (100uA) pull-up'ed
 
 // If register bit corresponding to IO is 0, pin is connected to GND
@@ -26,7 +26,7 @@ PCF8574 ex1(21, 22, 0x20);
 // Read datasheet for more precise description
 
 void setup() {
-	digitalWrite(ex1, 0, HIGH);
+	digitalWrite(ex1, 1, HIGH);
 }
 
 void loop() {

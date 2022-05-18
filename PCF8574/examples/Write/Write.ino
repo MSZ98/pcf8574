@@ -3,15 +3,12 @@
 PCF8574 ex1(21, 22, 0x20);
 //PCF8574 ex1(21, 22, PCF8574::combinationToAddress(0));
 
-// LED DIODE CONNECTED TO PIN 0 OF PCF8574
-
-//          R      LED
-// GND ----====----|>|---- P0
-// R = 2.2k
+// Example write HIGH to P1
+// LED diode between GND and P1
 
 void setup() {
-	pinMode(ex1, 0, OUTPUT);
-	digitalWrite(ex1, 0, HIGH);
+	pinMode(ex1, 1, OUTPUT);
+	digitalWrite(ex1, 1, HIGH);
 }
 
 void loop() {
