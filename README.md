@@ -7,7 +7,7 @@ Should work on most of the boards, tested on UNO and ESP32DevKitV1
 ## Usage
 ### Example write HIGH to P1
 ```
-#include "PCF8574.h"
+#include <PCF8574.h>
 
 PCF8574 ex1(21, 22, 0x20);
 //PCF8574 ex1(21, 22, PCF8574::combinationToAddress(0));
@@ -24,7 +24,7 @@ void loop() {
 
 ### Example read P0 state
 ```
-#include "PCF8574.h"
+#include <PCF8574.h>
 
 PCF8574 ex1(21, 22, 0x20);
 //PCF8574 ex1(21, 22, PCF8574::combinationToAddress(0));
@@ -42,7 +42,7 @@ void loop() {
 
 ### Example blink LED on P1
 ```
-#include "PCF8574.h"
+#include <PCF8574.h>
 
 PCF8574 ex1(21, 22, 0x20);
 //PCF8574 ex1(21, 22, PCF8574::combinationToAddress(0));
