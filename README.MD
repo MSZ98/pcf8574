@@ -77,7 +77,7 @@ int  PCF8574::combinationToAddress(int A2_A1_A0, bool version_A)</br>
 2. In Arduino IDE ... Sketch -> Include library -> Add .ZIP Library...
 3. #include <pcf8574.h>
 
-<\br><\br>OR<\br><\br>
+</br></br>OR</br></br>
 1. In Arduino IDE ... Sketch -> Include library -> Manage Libraries...
 2. Find and install pcf8574 by MSZ98
 3. #include <pcf8574.h>
