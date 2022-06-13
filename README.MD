@@ -9,8 +9,8 @@ Should work on most of the boards, tested on UNO and ESP32DevKitV1
 ```
 #include <pcf8574.h>
 
-PCF8574 ex1(21, 22, 0x20);
-//PCF8574 ex1(21, 22, PCF8574::combinationToAddress(0));
+PCF8574 ex1(0x20);
+//PCF8574 ex1(21, 22, 0x20); // FOR ESP32
 
 void setup() {
 	pinMode(ex1, 1, OUTPUT);
@@ -26,8 +26,8 @@ void loop() {
 ```
 #include <pcf8574.h>
 
-PCF8574 ex1(21, 22, 0x20);
-//PCF8574 ex1(21, 22, PCF8574::combinationToAddress(0));
+PCF8574 ex1(0x20);
+//PCF8574 ex1(21, 22, 0x20); // FOR ESP32
 
 void setup() {
 	Serial.begin(9600);
@@ -44,8 +44,8 @@ void loop() {
 ```
 #include <pcf8574.h>
 
-PCF8574 ex1(21, 22, 0x20);
-//PCF8574 ex1(21, 22, PCF8574::combinationToAddress(0));
+PCF8574 ex1(0x20);
+//PCF8574 ex1(21, 22, 0x20); // FOR ESP32
 
 // LED diode between GND and P1
 
@@ -60,8 +60,16 @@ void loop() {
 ```
 
 ### Constructor
-
+Constructor is different for Arduino AVR Boards and ESP32 due to Wire.h library implementation differences.
+Note address is the PCF8574 module address you set on the expander's board.
+#### Adruino AVR Boards</br>
+PCF8574(int address)</br>
+PCF8574(TwoWire &wire, int address)</br>
+#### ESP32
 PCF8574(int SDA, int SCL, int address)</br>
+PCF8574(TwoWire &wire, int address)</br>
+
+</br>Note you have to call setPins(SDA, SCL) before calling TwoWire constructor on ESP32</br>
 
 ### Functions
 
@@ -77,7 +85,7 @@ int  PCF8574::combinationToAddress(int A2_A1_A0, bool version_A)</br>
 2. In Arduino IDE ... Sketch -> Include library -> Add .ZIP Library...
 3. #include <pcf8574.h>
 
-</br></br>OR</br></br>
+<\br><\br>OR<\br><\br>
 1. In Arduino IDE ... Sketch -> Include library -> Manage Libraries...
 2. Find and install pcf8574 by MSZ98
 3. #include <pcf8574.h>
