@@ -61,7 +61,7 @@ void loop() {
 
 ### Constructor
 Constructor is different for Arduino AVR Boards and ESP32 due to Wire.h library implementation differences.
-Note address is the PCF8574 module address you set on the expander's board.
+Note: address is the PCF8574 module address you set on the expander's board.
 #### Adruino AVR Boards</br>
 PCF8574(int address)</br>
 PCF8574(TwoWire &wire, int address)</br>
@@ -69,7 +69,7 @@ PCF8574(TwoWire &wire, int address)</br>
 PCF8574(int SDA, int SCL, int address)</br>
 PCF8574(TwoWire &wire, int address)</br>
 
-</br>Note you have to call setPins(SDA, SCL) before calling TwoWire constructor on ESP32</br>
+</br>Note: you have to call setPins(SDA, SCL) before calling TwoWire constructor on ESP32</br>
 
 ### Functions
 
