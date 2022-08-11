@@ -1,55 +1,53 @@
 # PCF8574
 Arduino library for PCF8574 IO expander module
 
-## Supported boards
-Should work on most of the boards, tested on UNO and ESP32DevKitV1
+## 1. Supported boards
+Should work on most of the boards, tested on UNO, ESP32 and ESP8266
 
-## Usage
-### Example write HIGH to P1
+## 2. Usage
+### 2.1 Example write HIGH to P1
 ```
 #include <pcf8574.h>
 
 PCF8574 ex1(0x20);
-//PCF8574 ex1(21, 22, 0x20); // FOR ESP32
 
 void setup() {
+	delay(200);
 	pinMode(ex1, 1, OUTPUT);
 	digitalWrite(ex1, 1, HIGH);
 }
 
-void loop() {
-
-}
+void loop() {}
 ```
 
-### Example read P0 state
+### 2.2 Example read P0 state
 ```
 #include <pcf8574.h>
 
 PCF8574 ex1(0x20);
-//PCF8574 ex1(21, 22, 0x20); // FOR ESP32
 
 void setup() {
-	Serial.begin(9600);
+	delay(200);
+	Serial.begin(115200);
 	pinMode(ex1, 0, INPUT_PULLUP);
 }
 
 void loop() {
-	Serial.printf("%d\n", digitalRead(ex1, 0));
+	int state = digitalRead(ex1, 0);
+	if(state == -1) Serial.println("PCF8574 not detected");
+	Serial.println(String(state));
 	delay(500);
 }
 ```
 
-### Example blink LED on P1
+### 2.3 Example blink LED on P1
 ```
 #include <pcf8574.h>
 
 PCF8574 ex1(0x20);
-//PCF8574 ex1(21, 22, 0x20); // FOR ESP32
-
-// LED diode between GND and P1
 
 void setup() {
+	delay(200);
 	pinMode(ex1, 1, OUTPUT);
 }
 
@@ -59,42 +57,40 @@ void loop() {
 }
 ```
 
-### Constructor
-Constructor is different for Arduino AVR Boards and ESP32 due to Wire.h library implementation differences.
-Note: address is the PCF8574 module address you set on the expander's board.
-#### Adruino AVR Boards</br>
-PCF8574(int address)</br>
-PCF8574(TwoWire &wire, int address)</br>
-#### ESP32
-PCF8574(int SDA, int SCL, int address)</br>
-PCF8574(TwoWire &wire, int address)</br>
+### 2.4 Example search for connected PCF8574
+```
+#include <pcf8574.h>
 
-</br>Note: you have to call setPins(SDA, SCL) before calling TwoWire constructor on ESP32</br>
+void setup() {
+    delay(200);
+    Serial.begin(115200);
 
-### Functions
+    // SEARCH FOR PCF8574
+    for(int i = 0;i < 8;i++) {
+        int address = PCF8574::combinationToAddress(i, false);
+        if(PCF8574(address).read() != -1) {
+        	Serial.print("Found PCF8574: addr = 0x");
+            Serial.println(address, HEX);
+        }
+    }
 
-void pinMode      (PCF8574 &expander, int pin, int mode)</br>
-void digitalWrite (PCF8574 &expander, int pin, int value)</br>
-int  digitalRead  (PCF8574 &expander, int pin)</br>
-void digitalToggle(PCF8574 &expander, int pin)</br></br>
-int  PCF8574::combinationToAddress(int A2_A1_A0, bool version_A)</br>
+    // SEARCH FOR PCF8574A
+    for(int i = 0;i < 8;i++) {
+        int address = PCF8574::combinationToAddress(i, true);
+        if(PCF8574(address).read() != -1) {
+            Serial.print("Found PCF8574A: addr = 0x");
+            Serial.println(address, HEX);
+        }
+    }
 
-### Including library
+    Serial.println("Search done. If you don't see anything, nothing was found.");
 
-1. Download release
-2. In Arduino IDE ... Sketch -> Include library -> Add .ZIP Library...
-3. #include <pcf8574.h>
+}
 
-OR
+void loop() {}
+```
 
-1. In Arduino IDE ... Sketch -> Include library -> Manage Libraries...
-2. Find and install pcf8574 by MSZ98
-3. #include <pcf8574.h>
-
-## About
-This library allows microcontroller to use PCF8574 io expander module. If defines new class PCF8574 and special digitalWrite() as well as digitalRead(), which need also an object of type PCF8574. In my opinion it's the simplest library for this chip.
-
-## How PCF8574 works?
+## 3. How PCF8574 works?
 
  **PCF8574:**
  - Has only one 8-bit register to write
