@@ -112,7 +112,7 @@ void loop() {}
  - For PCF8574, first write address is 0x20 and last write address is 0x27
  - For PCF8574A, first write address is 0x38 and last write address is 0x3F
  
- 4. Planned future features
+## 4. Planned future features
  - attachInterrupt(pin, mode)
  - PCF8574 connection from any MCU pins 
  
