@@ -1,6 +1,6 @@
 /*
     pcf8574.cpp
-    Version 1.0.2
+    Version 1.0.3
     Created 18.05.2022
     Author: MSZ98 (github.com/MSZ98)
 
