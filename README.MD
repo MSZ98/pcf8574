@@ -5,6 +5,8 @@ Arduino library for PCF8574 IO expander module
 Should work on most of the boards, tested on UNO, ESP32 and ESP8266
 
 ## 2. Usage
+Everything is in the examples. Library is available in the Arduino Library Manager (Sketch -> Include Library -> Manage Libraries...).
+
 ### 2.1 Example write HIGH to P1
 ```
 #include <pcf8574.h>
