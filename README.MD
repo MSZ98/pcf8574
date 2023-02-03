@@ -71,7 +71,7 @@ void setup() {
     for(int i = 0;i < 8;i++) {
         int address = PCF8574::combinationToAddress(i, false);
         if(PCF8574(address).read() != -1) {
-        	Serial.print("Found PCF8574: addr = 0x");
+            Serial.print("Found PCF8574: addr = 0x");
             Serial.println(address, HEX);
         }
     }
